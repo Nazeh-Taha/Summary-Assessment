@@ -62,7 +62,16 @@ function reduce(array, f, acc) {
 //wordLetters("hello its me") // ["o","s","e"]
 
 function wordLetters(str) {
-    // TODO: your code here 
+  var strArr= str.split(" ");
+    var arr = [];
+  each(strArr, function(element,i){
+	  
+     var x = element.split("");
+	  
+	  arr.push(x[x.length-1]);
+  });
+	
+	return arr;
 }
 
 //=============================================================================
@@ -76,10 +85,18 @@ isPresent('efghi', 'a') // => false
 */
 
 function isPresent(string, target) {
-  // TODO: your code here 
+     var arr = string.split("");
+  return filter(arr, function(element){
+       return element === target
+  });
+  
+  if(arr.length > 0){
+    return true;
+  }else{
+    return false;
+  }
+
 }
-
-
 //=============================================================================
 /*                                  Q3                                    */
 //=============================================================================
@@ -89,7 +106,11 @@ function isPresent(string, target) {
 // wordsLongerThanFive("Hello Mad World") //["Hello", "World"]
 
 function wordsLongerThanFive(str) {
-    // TODO: your code here 
+    var arr=str.split(" ");
+	return filter(arr, function(element){
+		return (element.length)>=5;
+	});
+	return arr;
 }
 
 //=============================================================================
@@ -104,7 +125,7 @@ powerOfTwo(16); // true
 powerOfTwo(10); // false
 */
 function powerOfTwo(number) { 
- // TODO: your code here 
+ 
 } 
  
 
@@ -134,7 +155,34 @@ function powerOfTwo(number) {
 // pizza.eatSlice();
 
 // Write your code here .....
-
+function makePizza(crust,size,numberOfSlice){
+	var pizzaa={
+		crust:crust,
+		size:size,
+		numberOfSlice:numberOfSlice,
+		ingredient:[]
+	}
+	
+	return{
+		addIngredients:function(ingre){
+			return (pizzaa.ingredient).push(ingre);
+		},
+		displayIngredients:function(){
+			var x=pizzaa.ingredient.join();
+			return "The ingredients are:"+x;
+		},
+		eatSlice: function(){
+			var x=0;
+			if(pizzaa.numberOfSlice >0){
+				x= pizzaa.numberOfSlice;
+				x--;
+				return x;
+			}else{
+				return 0;
+			}
+		}
+	}
+}
 //=============================================================================
 /*                                  Q6                                      */
 //=============================================================================
@@ -155,9 +203,25 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 */
 
 //  Write your code here
-
+function circle(radius){
+	var circle1 = {}
+		circle1.value=radius;
+	    circle1.area =area;
+		circle1.increaseRadius=increaseRadius;
+	    circle1.circleArea=circleArea;
+	return circle1;
+	
+}
+var increaseRadius= function(n){
+	this.value=this.value*n;
+	return this.value;
+}
+var circleArea =function(){
+	this.area = 2 * Math.PI * this.radius;
+	return this.area;
+}
 // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
-
+//Yes I am
 //=============================================================================
 /*                                  Q7                                       */
 //=============================================================================
@@ -196,9 +260,24 @@ var salesTeam = [
 Write a function, isTeenager, that takes an array of information, salesTeam, and returns an array 
 that lists the full names of each member of the sales team that is a teenager (their age < 18).
 Make sure the first and last names are separated by a space.
-Note: Write the function using while loop and for loop.
-
-// Write your code here .....
+Note: Write the function using while loop and for loop.*/
+var salesTeam = [
+    {name: {first: 'Earline', last: 'Erickson'}, age: 19, sales: '$18876'},
+    {name: {first: 'Jin', last: 'Jeffrey'}, age: 17, sales: '$14402'},
+    {name: {first: 'Joleen', last: 'Jolin'}, age: 17, sales: '$15736'},
+    {name: {first: 'Jude', last: 'Jarrett'}, age: 53, sales: '$7557'},
+    {name: {first: 'Magda', last: 'Mireles'}, age: 18, sales: '$1498'},
+    {name: {first: 'Susan', last: 'Shilling'}, age: 29, sales: '$8542'},
+    {name: {first: 'Tama', last: 'Tworek'}, age: 16, sales: '$9200'},];
+function isTeenager (arr){
+	var x=[];
+	for(var i=0;i<arr.length; i++){
+		if(arr.age[i]<18){
+			x.push(arr.name);
+		}
+	}
+	return x;
+}
 
 
 //================================================================================
@@ -226,13 +305,13 @@ Note: Write the function using while loop and for loop.
 //================================================================================
 // Theoretical questions.
 // 1- In your own words,Why do we use Closures ?
-
+its allowus to intreduce peirsistent variable with out using global scope
 // 2- In OOP, what does "this" refer to ?
-
+refer to the Object that is to the left of the dote of function invocation time.
 // 3- What is jQuery?
-
+its  js library, simplifing js programing, and easy to learn
 // 4- what is the diffrence between Closure's methods and The OOP's methods?
-
+the two is simy equivalent but the defference between each other is paradigm.
 
 
 
